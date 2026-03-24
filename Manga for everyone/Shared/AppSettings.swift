@@ -17,6 +17,14 @@ class AppSettings: ObservableObject {
         didSet { UserDefaults.standard.set(appTheme.rawValue, forKey: "appTheme") }
     }
     
+    @Published var pageGap: Double {
+        didSet { UserDefaults.standard.set(pageGap, forKey: "pageGap") }
+    }
+    
+    @Published var blueLightFilter: Double {
+        didSet { UserDefaults.standard.set(blueLightFilter, forKey: "blueLightFilter") }
+    }
+    
     enum ReadingMode: String {
         case vertical = "Vertical"
         case horizontal = "Horizontal"
@@ -38,6 +46,7 @@ class AppSettings: ObservableObject {
     
     private init() {
         self.isDataSaverEnabled = UserDefaults.standard.bool(forKey: "isDataSaverEnabled")
+        
         if let mode = UserDefaults.standard.string(forKey: "readingMode"),
            let readingMode = ReadingMode(rawValue: mode) {
             self.readingMode = readingMode
@@ -51,5 +60,14 @@ class AppSettings: ObservableObject {
         } else {
             self.appTheme = .system
         }
+        
+        let savedPageGap = UserDefaults.standard.double(forKey: "pageGap")
+        if savedPageGap == 0 && UserDefaults.standard.object(forKey: "pageGap") == nil {
+            self.pageGap = 10 
+        } else {
+            self.pageGap = savedPageGap
+        }
+        
+        self.blueLightFilter = UserDefaults.standard.double(forKey: "blueLightFilter")
     }
 }
