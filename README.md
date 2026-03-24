@@ -35,15 +35,6 @@ MangaVN is a modern, high-performance manga reading application built entirely w
 - **Architecture**: MVVM
 - **Database**: MangaDex API v5
 
-## 🚀 Getting Started
-
-1. **Clone the project**:
-   ```bash
-   git clone https://github.com/yourusername/manga-vn.git
-   ```
-2. **Open in Xcode**: Open the `Manga for everyone.xcodeproj` file.
-3. **Build & Run**: Select a simulator or physical device and press `Cmd + R`.
-
 *Note: Requires iOS 17.0+ for SwiftData support.*
 
 ## 📄 License
